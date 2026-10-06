@@ -8,29 +8,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="family_tree.css">
 </head>
-<body><header>
-  <div>
-    <h1>家系図</h1>
-    <p class="lede">滝川・八代・鞭馬・磯崎・関係者の図を一つにまとめた家系図です。</p>
+<body>
+  <header>
+    <div>
+      <h1>家系図</h1>
+      <p class="lede">滝川・八代・鞭馬・磯崎・関係者の図を一つにまとめた家系図です。</p>
+    </div>
+  </header>
+
+  <!-- 家系名と線種の凡例。色・線種はfamily_tree.cssのsw/lnルールに対応。 -->
+  <div class="legend" aria-label="凡例">
+    <span><i class="sw sw-taki"></i>滝川家</span>
+    <span><i class="sw sw-yashiro"></i>八代家</span>
+    <span><i class="sw sw-muchi"></i>鞭馬家</span>
+    <span><i class="sw sw-iso"></i>磯崎家</span>
+    <span><i class="sw sw-oth"></i>配偶者・その他</span>
+    <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 1.5H30M0 6.5H30" stroke="var(--line)" stroke-width="1.4" fill="none"/></svg>婚姻（二重線）</span>
+    <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 4H30" stroke="var(--line)" stroke-width="1.2" fill="none"/></svg>婚姻以外の関係（一本線）</span>
+    <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 4H30" stroke="var(--line)" stroke-width="1.6" stroke-dasharray="6 4" fill="none"/></svg>養親子</span>
+    <span><i class="sw sw-unknown"></i>名前不明の人物</span>
   </div>
-</header>
-<div class="legend" aria-label="凡例">
-  <span><i class="sw sw-taki"></i>滝川家</span>
-  <span><i class="sw sw-yashiro"></i>八代家</span>
-  <span><i class="sw sw-muchi"></i>鞭馬家</span>
-  <span><i class="sw sw-iso"></i>磯崎家</span>
-  <span><i class="sw sw-oth"></i>配偶者・その他</span>
-  <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 1.5H30M0 6.5H30" stroke="var(--line)" stroke-width="1.4" fill="none"/></svg>婚姻（二重線）</span>
-  <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 4H30" stroke="var(--line)" stroke-width="1.2" fill="none"/></svg>婚姻以外の関係（一本線）</span>
-  <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 4H30" stroke="var(--line)" stroke-width="1.6" stroke-dasharray="6 4" fill="none"/></svg>養親子</span>
-  <span><i class="sw sw-unknown"></i>名前不明の人物</span>
-</div>
-<div class="bar">
-  <button id="zo" aria-label="縮小">−</button><button id="zi" aria-label="拡大">＋</button><button id="zf">全体を表示</button>
-  <span id="zl">70%</span><span>ドラッグかスクロールで移動できます</span>
-</div>
-<div class="view" id="view" tabindex="0" aria-label="家系図">
-<svg xmlns="http://www.w3.org/2000/svg" id="tree" viewBox="0 0 10198 1230" width="7139" height="861" role="img" aria-label="家系図">
+
+  <!-- family_tree.jsが各IDを参照して操作するコントロール。 -->
+  <div class="bar">
+    <button id="zo" aria-label="縮小">−</button>
+    <button id="zi" aria-label="拡大">＋</button>
+    <button id="zf">全体を表示</button>
+    <span id="zl">70%</span>
+    <span>ドラッグかスクロールで移動できます</span>
+  </div>
+
+  <!-- スクロール領域。SVG座標・サイズは家系図の固定レイアウトを定義する。 -->
+  <div class="view" id="view" tabindex="0" aria-label="家系図">
+    <svg xmlns="http://www.w3.org/2000/svg" id="tree" viewBox="0 0 10198 1230" width="7139" height="861" role="img" aria-label="家系図">
+      <!-- 関係線。pathの座標とfamily-* classが位置・線色を決める。 -->
+      <g id="relationships">
   <path class="ed family-oth" d="M5992.2,990.0V1026M5879.5,1026H5992.2M5879.5,1026V1120"/>
   <path class="ed family-oth" d="M6102.2,990.0V1026M6028.0,1026H6102.2M6028.0,1026V1120"/>
   <path class="ed family-oth" d="M6212.2,990.0V1026M6176.5,1026H6325.0M6176.5,1026V1120M6325.0,1026V1120"/>
@@ -76,6 +88,9 @@
   <path class="ed family-muchi" d="M4895.0,390.0V444M2761.0,444H5192.0M4449.5,444V520M4598.0,444V520M4746.5,444V520M4895.0,444V520M2761.0,444V520M5043.5,444V520M5192.0,444V520"/>
   <path class="ed family-muchi" d="M5005.0,390.0V426M5005.0,426H5340.5M5340.5,426V520"/>
   <path class="ed family-muchi" d="M4895.0,240.0V276M4895.0,276H4950.0M4950.0,276V370"/>
+      </g>
+      <!-- 婚姻線。既存のlk/s classが線種と表示を決める。 -->
+      <g id="marriages">
   <path class="lk" d="M1844.5,237.5H1862.5M1844.5,242.5H1862.5"/>
   <path class="lk s" d="M101.0,390.0H119.0"/>
   <path class="lk s" d="M101.0,540.0H119.0"/>
@@ -126,10 +141,13 @@
   <path class="lk" d="M9269.5,387.5H9287.5M9269.5,392.5H9287.5"/>
   <path class="lk" d="M9489.5,387.5H9507.5M9489.5,392.5H9507.5"/>
   <path class="lk" d="M9489.5,537.5H9507.5M9489.5,542.5H9507.5"/>
+      </g>
+      <!-- 人物ノード。ノード順は表示の重なり順を保つため変更しない。既存class・data-idはCSSや識別用のフック。 -->
+      <g id="people">
   <g class="nd family-taki" data-id="滝川周藏">
     <rect x="7505.5" y="70" width="92" height="40" rx="4"/>
     <text x="7551.5" y="94.5" font-size="13" text-anchor="middle">滝川周藏</text>
-  </g>
+      </g>
   <g class="nd family-taki" data-id="滝川駒太郎">
     <rect x="7615.5" y="220" width="92" height="40" rx="4"/>
     <text x="7661.5" y="244.5" font-size="13" text-anchor="middle">滝川駒太郎</text>
@@ -690,10 +708,11 @@
     <rect x="5014.0" y="370" width="92" height="40" rx="4"/>
     <text x="5060.0" y="394.5" font-size="13" text-anchor="middle">空欄</text>
   </g>
-</svg>
-</div>
+  </g>
+    </svg>
+  </div>
 
 
-<script src="family_tree.js"></script>
+  <script src="family_tree.js"></script>
 </body>
 </html>
