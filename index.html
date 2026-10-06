@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>家系図</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="family_tree.css">
+</head>
+<body><header>
+  <div>
+    <h1>家系図</h1>
+    <p class="lede">滝川・八代・鞭馬・磯崎・関係者の図を一つにまとめた家系図です。</p>
+  </div>
+</header>
+<div class="legend" aria-label="凡例">
+  <span><i class="sw sw-taki"></i>滝川家</span>
+  <span><i class="sw sw-yashiro"></i>八代家</span>
+  <span><i class="sw sw-muchi"></i>鞭馬家</span>
+  <span><i class="sw sw-iso"></i>磯崎家</span>
+  <span><i class="sw sw-oth"></i>配偶者・その他</span>
+  <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 1.5H30M0 6.5H30" stroke="var(--line)" stroke-width="1.4" fill="none"/></svg>婚姻（二重線）</span>
+  <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 4H30" stroke="var(--line)" stroke-width="1.2" fill="none"/></svg>婚姻以外の関係（一本線）</span>
+  <span><svg class="ln" viewBox="0 0 30 8"><path d="M0 4H30" stroke="var(--line)" stroke-width="1.6" stroke-dasharray="6 4" fill="none"/></svg>養親子</span>
+  <span><i class="sw sw-unknown"></i>名前不明の人物</span>
+</div>
+<div class="bar">
+  <button id="zo" aria-label="縮小">−</button><button id="zi" aria-label="拡大">＋</button><button id="zf">全体を表示</button>
+  <span id="zl">70%</span><span>ドラッグかスクロールで移動できます</span>
+</div>
+<div class="view" id="view" tabindex="0" aria-label="家系図">
+<svg xmlns="http://www.w3.org/2000/svg" id="tree" viewBox="0 0 10198 1230" width="7139" height="861" role="img" aria-label="家系図">
+  <path class="ed family-oth" d="M5992.2,990.0V1026M5879.5,1026H5992.2M5879.5,1026V1120"/>
+  <path class="ed family-oth" d="M6102.2,990.0V1026M6028.0,1026H6102.2M6028.0,1026V1120"/>
+  <path class="ed family-oth" d="M6212.2,990.0V1026M6176.5,1026H6325.0M6176.5,1026V1120M6325.0,1026V1120"/>
+  <path class="ed family-oth" d="M6195.8,840.0V876M5731.0,876H6195.8M5731.0,876V970M6047.2,876V970"/>
+  <path class="ed family-taki" d="M6305.8,840.0V876M6305.8,876H6770.5M6473.5,876V970M6622.0,876V970M6770.5,876V970"/>
+  <path class="ed family-oth" d="M6974.0,840.0V876M6954.8,876H6974.0M6954.8,876V970"/>
+  <path class="ed family-oth" d="M7084.0,840.0V876M7084.0,876H7103.2M7103.2,876V970"/>
+  <path class="ed family-taki" d="M6435.0,690.0V726M6360.8,726H7029.0M6360.8,726V820M7029.0,726V820"/>
+  <path class="ed family-taki" d="M6693.5,540.0V576M6490.0,576H7804.5M6490.0,576V670M7287.5,576V670M7546.0,576V670M7804.5,576V670"/>
+  <path class="ed family-oth" d="M6473.5,540.0V576M5582.5,576H6473.5M5582.5,576V670M6380.0,576V670"/>
+  <path class="ed family-oth" d="M6567.0,390.0V426M6567.0,426H6638.5M6638.5,426V520"/>
+  <path class="ed family-taki" d="M6897.0,390.0V426M6748.5,426H8211.5M6748.5,426V520M7953.0,426V520M8211.5,426V520"/>
+  <path class="ed family-oth" d="M8415.0,390.0V426M8415.0,426H8855.0M8855.0,426V520"/>
+  <path class="ed family-oth" d="M8635.0,390.0V435M8635.0,435H9075.0M9075.0,435V520"/>
+  <path class="ed family-oth" d="M8965.0,390.0V426M8965.0,426H8965.0M8965.0,426V520"/>
+  <path class="ed adopt family-oth" d="M9498.5,390.0V426M9498.5,426H9553.5M9553.5,426V520"/>
+  <path class="ed family-oth" d="M9278.5,390.0V435M9278.5,435H9553.5M9553.5,435V520"/>
+  <path class="ed family-oth" d="M7716.5,240.0V294M6842.0,294H9850.5M6842.0,294V370M9020.0,294V370M9553.5,294V370M9702.0,294V370M9850.5,294V370"/>
+  <path class="ed family-oth" d="M7936.5,240.0V276M7936.5,276H8910.0M8910.0,276V370"/>
+  <path class="ed family-oth" d="M8156.5,240.0V285M8156.5,285H9443.5M9443.5,285V370"/>
+  <path class="ed family-oth" d="M7826.5,90.0V126M7771.5,126H7826.5M7771.5,126V220"/>
+  <path class="ed adopt family-taki" d="M7551.5,110.0V135M7551.5,135H7661.5M7661.5,135V220"/>
+  <path class="ed family-oth" d="M7661.5,110.0V126M7661.5,126H7661.5M7661.5,126V220"/>
+  <path class="ed family-yashiro" d="M2854.5,990.0V1026M2854.5,1026H2854.5M2854.5,1026V1120"/>
+  <path class="ed family-yashiro" d="M2651.0,840.0V876M2354.0,876H2651.0M2354.0,876V970M2502.5,876V970M2651.0,876V970"/>
+  <path class="ed family-yashiro" d="M2761.0,840.0V876M2761.0,876H3058.0M2909.5,876V970M3058.0,876V970"/>
+  <path class="ed family-yashiro" d="M2706.0,690.0V735M2706.0,735H6250.8M2706.0,735V820M6250.8,735V820"/>
+  <path class="ed family-iso" d="M3280.8,840.0V876M3206.5,876H3355.0M3206.5,876V970M3355.0,876V970"/>
+  <path class="ed family-iso" d="M3280.8,690.0V726M3225.8,726H3280.8M3225.8,726V820"/>
+  <path class="ed family-oth" d="M2596.0,540.0V576M1760.0,576H2651.0M2651.0,576V670M1760.0,576V670M1908.5,576V670M2057.0,576V670M2205.5,576V670"/>
+  <path class="ed family-muchi" d="M2816.0,540.0V576M2761.0,576H3503.5M2761.0,576V670M3225.8,576V670M3503.5,576V670"/>
+  <path class="ed family-muchi" d="M2761.0,560.0V585M2761.0,585H3652.0M3652.0,585V670"/>
+  <path class="ed family-yashiro" d="M610.5,690.0V726M462.0,726H759.0M462.0,726V820M610.5,726V820M759.0,726V820"/>
+  <path class="ed family-yashiro" d="M684.8,540.0V576M665.5,576H907.5M665.5,576V670M907.5,576V670"/>
+  <path class="ed family-yashiro" d="M1130.3,540.0V576M1056.0,576H1204.5M1056.0,576V670M1204.5,576V670"/>
+  <path class="ed family-yashiro" d="M1408.0,540.0V576M1408.0,576H1408.0M1408.0,576V670"/>
+  <path class="ed family-yashiro" d="M2057.0,390.0V426M629.8,426H2651.0M629.8,426V520M1075.3,426V520M1463.0,426V520M1611.5,426V520M2651.0,426V520"/>
+  <path class="ed family-yashiro" d="M110.0,390.0V426M110.0,426H165.0M165.0,426V520"/>
+  <path class="ed family-yashiro" d="M110.0,540.0V576M110.0,576H110.0M110.0,576V670"/>
+  <path class="ed family-yashiro" d="M1853.5,240.0V276M165.0,276H2112.0M2112.0,276V370M165.0,276V370M313.5,276V370"/>
+  <path class="ed family-iso" d="M3949.0,390.0V426M3910.5,426H3949.0M3910.5,426V520"/>
+  <path class="ed family-iso" d="M4059.0,390.0V435M2871.0,435H4207.5M4059.0,435V520M4207.5,435V520M2871.0,435V520"/>
+  <path class="ed family-muchi" d="M4895.0,390.0V444M2761.0,444H5192.0M4449.5,444V520M4598.0,444V520M4746.5,444V520M4895.0,444V520M2761.0,444V520M5043.5,444V520M5192.0,444V520"/>
+  <path class="ed family-muchi" d="M5005.0,390.0V426M5005.0,426H5340.5M5340.5,426V520"/>
+  <path class="ed family-muchi" d="M4895.0,240.0V276M4895.0,276H4950.0M4950.0,276V370"/>
+  <path class="lk" d="M1844.5,237.5H1862.5M1844.5,242.5H1862.5"/>
+  <path class="lk s" d="M101.0,390.0H119.0"/>
+  <path class="lk s" d="M101.0,540.0H119.0"/>
+  <path class="lk s" d="M2048.0,390.0H2066.0"/>
+  <path class="lk s" d="M675.8,540.0H693.8"/>
+  <path class="lk s" d="M601.5,690.0H619.5"/>
+  <path class="lk s" d="M1121.3,540.0H1139.3"/>
+  <path class="lk s" d="M1399.0,540.0H1417.0"/>
+  <path class="lk s" d="M2587.0,540.0H2605.0"/>
+  <path class="lk" d="M2697.0,537.5H2715.0M2697.0,542.5H2715.0"/>
+  <path class="lk s" d="M2807.0,540.0H2825.0"/>
+  <path class="lk" d="M2697.0,687.5H2715.0M2697.0,692.5H2715.0"/>
+  <path class="lk" d="M2642.0,837.5H2660.0M2642.0,842.5H2660.0"/>
+  <path class="lk s" d="M2752.0,840.0H2770.0"/>
+  <path class="lk s" d="M2845.5,990.0H2863.5"/>
+  <path class="lk s" d="M3271.8,690.0H3289.8"/>
+  <path class="lk s" d="M3271.8,840.0H3289.8"/>
+  <path class="lk s" d="M3940.0,390.0H3958.0"/>
+  <path class="lk" d="M4050.0,387.5H4068.0M4050.0,392.5H4068.0"/>
+  <path class="lk" d="M4886.0,237.5H4904.0M4886.0,242.5H4904.0"/>
+  <path class="lk" d="M4886.0,387.5H4904.0M4886.0,392.5H4904.0"/>
+  <path class="lk s" d="M4996.0,390.0H5014.0"/>
+  <path class="lk" d="M7817.5,87.5H7835.5M7817.5,92.5H7835.5"/>
+  <path class="lk" d="M7707.5,237.5H7725.5M7707.5,242.5H7725.5"/>
+  <path class="lk" d="M7927.5,237.5H7945.5M7927.5,242.5H7945.5"/>
+  <path class="lk" d="M8147.5,237.5H8165.5M8147.5,242.5H8165.5"/>
+  <path class="lk" d="M6558.0,387.5H6576.0M6558.0,392.5H6576.0"/>
+  <path class="lk" d="M6888.0,387.5H6906.0M6888.0,392.5H6906.0"/>
+  <path class="lk" d="M6464.5,537.5H6482.5M6464.5,542.5H6482.5"/>
+  <path class="lk" d="M6684.5,537.5H6702.5M6684.5,542.5H6702.5"/>
+  <path class="lk" d="M6426.0,687.5H6444.0M6426.0,692.5H6444.0"/>
+  <path class="lk s" d="M6186.8,840.0H6204.8"/>
+  <path class="lk" d="M6296.8,837.5H6314.8M6296.8,842.5H6314.8"/>
+  <path class="lk s" d="M5983.2,990.0H6001.2"/>
+  <path class="lk s" d="M6093.2,990.0H6111.2"/>
+  <path class="lk s" d="M6203.2,990.0H6221.2"/>
+  <path class="lk s" d="M6965.0,840.0H6983.0"/>
+  <path class="lk" d="M7075.0,837.5H7093.0M7075.0,842.5H7093.0"/>
+  <path class="lk" d="M7482.0,687.5H7500.0M7482.0,692.5H7500.0"/>
+  <path class="lk" d="M7740.5,687.5H7758.5M7740.5,692.5H7758.5"/>
+  <path class="lk" d="M7999.0,537.5H8017.0M7999.0,542.5H8017.0"/>
+  <path class="lk" d="M8406.0,387.5H8424.0M8406.0,392.5H8424.0"/>
+  <path class="lk" d="M8626.0,387.5H8644.0M8626.0,392.5H8644.0"/>
+  <path class="lk" d="M8846.0,387.5H8864.0M8846.0,392.5H8864.0"/>
+  <path class="lk s" d="M8956.0,390.0H8974.0"/>
+  <path class="lk s" d="M8901.0,540.0H8919.0"/>
+  <path class="lk" d="M9011.0,537.5H9029.0M9011.0,542.5H9029.0"/>
+  <path class="lk" d="M9269.5,387.5H9287.5M9269.5,392.5H9287.5"/>
+  <path class="lk" d="M9489.5,387.5H9507.5M9489.5,392.5H9507.5"/>
+  <path class="lk" d="M9489.5,537.5H9507.5M9489.5,542.5H9507.5"/>
+  <g class="nd family-taki" data-id="滝川周藏">
+    <rect x="7505.5" y="70" width="92" height="40" rx="4"/>
+    <text x="7551.5" y="94.5" font-size="13" text-anchor="middle">滝川周藏</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川駒太郎">
+    <rect x="7615.5" y="220" width="92" height="40" rx="4"/>
+    <text x="7661.5" y="244.5" font-size="13" text-anchor="middle">滝川駒太郎</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川千吉">
+    <rect x="9656.0" y="370" width="92" height="40" rx="4"/>
+    <text x="9702.0" y="394.5" font-size="13" text-anchor="middle">滝川千吉</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川兵太郎">
+    <rect x="9507.5" y="370" width="92" height="40" rx="4"/>
+    <text x="9553.5" y="394.5" font-size="13" text-anchor="middle">滝川兵太郎</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川榮市">
+    <rect x="8974.0" y="370" width="92" height="40" rx="4"/>
+    <text x="9020.0" y="394.5" font-size="13" text-anchor="middle">滝川榮市</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川紘市">
+    <rect x="9804.5" y="370" width="92" height="40" rx="4"/>
+    <text x="9850.5" y="394.5" font-size="13" text-anchor="middle">滝川紘市</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川ミノ">
+    <rect x="6796.0" y="370" width="92" height="40" rx="4"/>
+    <text x="6842.0" y="394.5" font-size="13" text-anchor="middle">滝川ミノ</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川昇">
+    <rect x="9507.5" y="520" width="92" height="40" rx="4"/>
+    <text x="9553.5" y="544.5" font-size="13" text-anchor="middle">滝川昇</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川正市">
+    <rect x="8919.0" y="520" width="92" height="40" rx="4"/>
+    <text x="8965.0" y="544.5" font-size="13" text-anchor="middle">滝川正市</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川富雄">
+    <rect x="6702.5" y="520" width="92" height="40" rx="4"/>
+    <text x="6748.5" y="544.5" font-size="13" text-anchor="middle">滝川富雄</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川チヨ">
+    <rect x="7907.0" y="520" width="92" height="40" rx="4"/>
+    <text x="7953.0" y="544.5" font-size="13" text-anchor="middle">滝川チヨ</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川秀雄">
+    <rect x="8165.5" y="520" width="92" height="40" rx="4"/>
+    <text x="8211.5" y="544.5" font-size="13" text-anchor="middle">滝川秀雄</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川髙司">
+    <rect x="6444.0" y="670" width="92" height="40" rx="4"/>
+    <text x="6490.0" y="694.5" font-size="13" text-anchor="middle">滝川髙司</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川輝子">
+    <rect x="7241.5" y="670" width="92" height="40" rx="4"/>
+    <text x="7287.5" y="694.5" font-size="13" text-anchor="middle">滝川輝子</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川正司">
+    <rect x="7500.0" y="670" width="92" height="40" rx="4"/>
+    <text x="7546.0" y="694.5" font-size="13" text-anchor="middle">滝川正司</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川國光">
+    <rect x="7758.5" y="670" width="92" height="40" rx="4"/>
+    <text x="7804.5" y="694.5" font-size="13" text-anchor="middle">滝川國光</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川孝子">
+    <rect x="6983.0" y="820" width="92" height="40" rx="4"/>
+    <text x="7029.0" y="844.5" font-size="13" text-anchor="middle">滝川孝子</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川瑠己">
+    <rect x="6427.5" y="970" width="92" height="40" rx="4"/>
+    <text x="6473.5" y="994.5" font-size="13" text-anchor="middle">滝川瑠己</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川達也">
+    <rect x="6576.0" y="970" width="92" height="40" rx="4"/>
+    <text x="6622.0" y="994.5" font-size="13" text-anchor="middle">滝川達也</text>
+  </g>
+  <g class="nd family-taki" data-id="滝川裕也">
+    <rect x="6724.5" y="970" width="92" height="40" rx="4"/>
+    <text x="6770.5" y="994.5" font-size="13" text-anchor="middle">滝川裕也</text>
+  </g>
+  <g class="nd family-oth" data-id="萬田好太郎">
+    <rect x="7615.5" y="70" width="92" height="40" rx="4"/>
+    <text x="7661.5" y="94.5" font-size="13" text-anchor="middle">萬田好太郎</text>
+  </g>
+  <g class="nd family-oth" data-id="大安勘次郎">
+    <rect x="7835.5" y="70" width="92" height="40" rx="4"/>
+    <text x="7881.5" y="94.5" font-size="13" text-anchor="middle">大安勘次郎</text>
+  </g>
+  <g class="nd family-oth" data-id="大安ツル">
+    <rect x="7725.5" y="220" width="92" height="40" rx="4"/>
+    <text x="7771.5" y="244.5" font-size="13" text-anchor="middle">大安ツル</text>
+  </g>
+  <g class="nd family-oth" data-id="渡邉重太郎">
+    <rect x="8165.5" y="220" width="92" height="40" rx="4"/>
+    <text x="8211.5" y="244.5" font-size="13" text-anchor="middle">渡邉重太郎</text>
+  </g>
+  <g class="nd family-oth" data-id="チョウ">
+    <rect x="8055.5" y="220" width="92" height="40" rx="4"/>
+    <text x="8101.5" y="244.5" font-size="13" text-anchor="middle">チョウ</text>
+  </g>
+  <g class="nd family-oth" data-id="松下儀作">
+    <rect x="7945.5" y="220" width="92" height="40" rx="4"/>
+    <text x="7991.5" y="244.5" font-size="13" text-anchor="middle">松下儀作</text>
+  </g>
+  <g class="nd family-oth" data-id="クラ">
+    <rect x="7835.5" y="220" width="92" height="40" rx="4"/>
+    <text x="7881.5" y="244.5" font-size="13" text-anchor="middle">クラ</text>
+  </g>
+  <g class="nd family-oth" data-id="渡邉スギ">
+    <rect x="9397.5" y="370" width="92" height="40" rx="4"/>
+    <text x="9443.5" y="394.5" font-size="13" text-anchor="middle">渡邉スギ</text>
+  </g>
+  <g class="nd family-oth" data-id="ユリ">
+    <rect x="9177.5" y="370" width="92" height="40" rx="4"/>
+    <text x="9223.5" y="394.5" font-size="13" text-anchor="middle">ユリ</text>
+  </g>
+  <g class="nd family-oth" data-id="増山土右衛門">
+    <rect x="9287.5" y="370" width="92" height="40" rx="4"/>
+    <text x="9333.5" y="394.5" font-size="13" text-anchor="middle">増山土右衛門</text>
+  </g>
+  <g class="nd family-oth" data-id="吉田初代">
+    <rect x="9397.5" y="520" width="92" height="40" rx="4"/>
+    <text x="9443.5" y="544.5" font-size="13" text-anchor="middle">吉田初代</text>
+  </g>
+  <g class="nd family-oth" data-id="松下トラ">
+    <rect x="8864.0" y="370" width="92" height="40" rx="4"/>
+    <text x="8910.0" y="394.5" font-size="13" text-anchor="middle">松下トラ</text>
+  </g>
+  <g class="nd family-oth" data-id="廣瀬岩太郎">
+    <rect x="8754.0" y="370" width="92" height="40" rx="4"/>
+    <text x="8800.0" y="394.5" font-size="13" text-anchor="middle">廣瀬岩太郎</text>
+  </g>
+  <g class="nd family-oth" data-id="塩本キク">
+    <rect x="8809.0" y="520" width="92" height="40" rx="4"/>
+    <text x="8855.0" y="544.5" font-size="13" text-anchor="middle">塩本キク</text>
+  </g>
+  <g class="nd family-oth" data-id="のゑ">
+    <rect x="8314.0" y="370" width="92" height="40" rx="4"/>
+    <text x="8360.0" y="394.5" font-size="13" text-anchor="middle">のゑ</text>
+  </g>
+  <g class="nd family-oth" data-id="塩本武一">
+    <rect x="8424.0" y="370" width="92" height="40" rx="4"/>
+    <text x="8470.0" y="394.5" font-size="13" text-anchor="middle">塩本武一</text>
+  </g>
+  <g class="nd family-oth" data-id="朝野蓮香">
+    <rect x="8534.0" y="370" width="92" height="40" rx="4"/>
+    <text x="8580.0" y="394.5" font-size="13" text-anchor="middle">朝野蓮香</text>
+  </g>
+  <g class="nd family-oth" data-id="松尾秋藏">
+    <rect x="8644.0" y="370" width="92" height="40" rx="4"/>
+    <text x="8690.0" y="394.5" font-size="13" text-anchor="middle">松尾秋藏</text>
+  </g>
+  <g class="nd family-oth" data-id="松尾幸子">
+    <rect x="9029.0" y="520" width="92" height="40" rx="4"/>
+    <text x="9075.0" y="544.5" font-size="13" text-anchor="middle">松尾幸子</text>
+  </g>
+  <g class="nd family-oth" data-id="福田スヨ">
+    <rect x="6466.0" y="370" width="92" height="40" rx="4"/>
+    <text x="6512.0" y="394.5" font-size="13" text-anchor="middle">福田スヨ</text>
+  </g>
+  <g class="nd family-oth" data-id="福田扁次郎">
+    <rect x="6686.0" y="370" width="92" height="40" rx="4"/>
+    <text x="6732.0" y="394.5" font-size="13" text-anchor="middle">福田扁次郎</text>
+  </g>
+  <g class="nd family-oth" data-id="福田ヨシヱ">
+    <rect x="6592.5" y="520" width="92" height="40" rx="4"/>
+    <text x="6638.5" y="544.5" font-size="13" text-anchor="middle">福田ヨシヱ</text>
+  </g>
+  <g class="nd family-oth" data-id="増山正義">
+    <rect x="8017.0" y="520" width="92" height="40" rx="4"/>
+    <text x="8063.0" y="544.5" font-size="13" text-anchor="middle">増山正義</text>
+  </g>
+  <g class="nd family-oth" data-id="竹本ミサオ">
+    <rect x="6372.5" y="520" width="92" height="40" rx="4"/>
+    <text x="6418.5" y="544.5" font-size="13" text-anchor="middle">竹本ミサオ</text>
+  </g>
+  <g class="nd family-oth" data-id="田中芳村">
+    <rect x="6482.5" y="520" width="92" height="40" rx="4"/>
+    <text x="6528.5" y="544.5" font-size="13" text-anchor="middle">田中芳村</text>
+  </g>
+  <g class="nd family-oth" data-id="田中君子">
+    <rect x="6334.0" y="670" width="92" height="40" rx="4"/>
+    <text x="6380.0" y="694.5" font-size="13" text-anchor="middle">田中君子</text>
+  </g>
+  <g class="nd family-oth" data-id="君子姉">
+    <rect x="5536.5" y="670" width="92" height="40" rx="4"/>
+    <text x="5582.5" y="694.5" font-size="13" text-anchor="middle">君子姉</text>
+  </g>
+  <g class="nd family-oth" data-id="日高三重子">
+    <rect x="7390.0" y="670" width="92" height="40" rx="4"/>
+    <text x="7436.0" y="694.5" font-size="13" text-anchor="middle">日高三重子</text>
+  </g>
+  <g class="nd family-oth" data-id="牛島利津代">
+    <rect x="7648.5" y="670" width="92" height="40" rx="4"/>
+    <text x="7694.5" y="694.5" font-size="13" text-anchor="middle">牛島利津代</text>
+  </g>
+  <g class="nd family-oth" data-id="梶原春樹">
+    <rect x="7093.0" y="820" width="92" height="40" rx="4"/>
+    <text x="7139.0" y="844.5" font-size="13" text-anchor="middle">梶原春樹</text>
+  </g>
+  <g class="nd family-oth" data-id="上原清和">
+    <rect x="6873.0" y="820" width="92" height="40" rx="4"/>
+    <text x="6919.0" y="844.5" font-size="13" text-anchor="middle">上原清和</text>
+  </g>
+  <g class="nd family-oth" data-id="しん">
+    <rect x="7057.2" y="970" width="92" height="40" rx="4"/>
+    <text x="7103.2" y="994.5" font-size="13" text-anchor="middle">しん</text>
+  </g>
+  <g class="nd family-oth" data-id="和希">
+    <rect x="6908.8" y="970" width="92" height="40" rx="4"/>
+    <text x="6954.8" y="994.5" font-size="13" text-anchor="middle">和希</text>
+  </g>
+  <g class="nd family-oth" data-id="青野治">
+    <rect x="6094.8" y="820" width="92" height="40" rx="4"/>
+    <text x="6140.8" y="844.5" font-size="13" text-anchor="middle">青野治</text>
+  </g>
+  <g class="nd family-oth" data-id="青野将大">
+    <rect x="5685.0" y="970" width="92" height="40" rx="4"/>
+    <text x="5731.0" y="994.5" font-size="13" text-anchor="middle">青野将大</text>
+  </g>
+  <g class="nd family-oth" data-id="百恵">
+    <rect x="6001.2" y="970" width="92" height="40" rx="4"/>
+    <text x="6047.2" y="994.5" font-size="13" text-anchor="middle">百恵</text>
+  </g>
+  <g class="nd family-oth" data-id="黒板龍聖">
+    <rect x="5891.2" y="970" width="92" height="40" rx="4"/>
+    <text x="5937.2" y="994.5" font-size="13" text-anchor="middle">黒板龍聖</text>
+  </g>
+  <g class="nd family-oth" data-id="越野慎">
+    <rect x="6111.2" y="970" width="92" height="40" rx="4"/>
+    <text x="6157.2" y="994.5" font-size="13" text-anchor="middle">越野慎</text>
+  </g>
+  <g class="nd family-oth" data-id="きら">
+    <rect x="6221.2" y="970" width="92" height="40" rx="4"/>
+    <text x="6267.2" y="994.5" font-size="13" text-anchor="middle">きら</text>
+  </g>
+  <g class="nd family-oth" data-id="千咲妃">
+    <rect x="5833.5" y="1120" width="92" height="40" rx="4"/>
+    <text x="5879.5" y="1144.5" font-size="13" text-anchor="middle">千咲妃</text>
+  </g>
+  <g class="nd family-oth" data-id="姫音莉">
+    <rect x="5982.0" y="1120" width="92" height="40" rx="4"/>
+    <text x="6028.0" y="1144.5" font-size="13" text-anchor="middle">姫音莉</text>
+  </g>
+  <g class="nd family-oth" data-id="林田雄太郎">
+    <rect x="10046.5" y="820" width="92" height="40" rx="4"/>
+    <text x="10092.5" y="844.5" font-size="13" text-anchor="middle">林田雄太郎</text>
+  </g>
+  <g class="nd family-oth" data-id="tsuma">
+    <rect x="7725.5" y="70" width="92" height="40" rx="4"/>
+    <text x="7771.5" y="94.5" font-size="13" text-anchor="middle">勘次郎の妻</text>
+  </g>
+  <g class="nd family-oth" data-id="suyo_o">
+    <rect x="6576.0" y="370" width="92" height="40" rx="4"/>
+    <text x="6622.0" y="394.5" font-size="13" text-anchor="middle">スヨの夫</text>
+  </g>
+  <g class="nd family-oth" data-id="mino_o">
+    <rect x="6906.0" y="370" width="92" height="40" rx="4"/>
+    <text x="6952.0" y="394.5" font-size="13" text-anchor="middle">ミノの夫</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代秋太">
+    <rect x="1862.5" y="220" width="92" height="40" rx="4"/>
+    <text x="1908.5" y="244.5" font-size="13" text-anchor="middle">八代秋太</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代円三">
+    <rect x="2066.0" y="370" width="92" height="40" rx="4"/>
+    <text x="2112.0" y="394.5" font-size="13" text-anchor="middle">八代円三</text>
+  </g>
+  <g class="nd family-yashiro" data-id="スマ">
+    <rect x="1956.0" y="370" width="92" height="40" rx="4"/>
+    <text x="2002.0" y="394.5" font-size="13" text-anchor="middle">スマ</text>
+  </g>
+  <g class="nd family-yashiro" data-id="芳子">
+    <rect x="583.8" y="520" width="92" height="40" rx="4"/>
+    <text x="629.8" y="544.5" font-size="13" text-anchor="middle">芳子</text>
+  </g>
+  <g class="nd family-yashiro" data-id="晴代">
+    <rect x="1029.3" y="520" width="92" height="40" rx="4"/>
+    <text x="1075.3" y="544.5" font-size="13" text-anchor="middle">晴代</text>
+  </g>
+  <g class="nd family-yashiro" data-id="ユス">
+    <rect x="1417.0" y="520" width="92" height="40" rx="4"/>
+    <text x="1463.0" y="544.5" font-size="13" text-anchor="middle">ユス</text>
+  </g>
+  <g class="nd family-yashiro" data-id="信二">
+    <rect x="1565.5" y="520" width="92" height="40" rx="4"/>
+    <text x="1611.5" y="544.5" font-size="13" text-anchor="middle">信二</text>
+  </g>
+  <g class="nd family-yashiro" data-id="養一">
+    <rect x="119.0" y="520" width="92" height="40" rx="4"/>
+    <text x="165.0" y="544.5" font-size="13" text-anchor="middle">養一</text>
+  </g>
+  <g class="nd family-yashiro" data-id="きんじ">
+    <rect x="119.0" y="370" width="92" height="40" rx="4"/>
+    <text x="165.0" y="394.5" font-size="13" text-anchor="middle">きんじ</text>
+  </g>
+  <g class="nd family-yashiro" data-id="じった">
+    <rect x="267.5" y="370" width="92" height="40" rx="4"/>
+    <text x="313.5" y="394.5" font-size="13" text-anchor="middle">じった</text>
+  </g>
+  <g class="nd family-yashiro" data-id="美義">
+    <rect x="64.0" y="670" width="92" height="40" rx="4"/>
+    <text x="110.0" y="694.5" font-size="13" text-anchor="middle">美義</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代勝">
+    <rect x="2605.0" y="520" width="92" height="40" rx="4"/>
+    <text x="2651.0" y="544.5" font-size="13" text-anchor="middle">八代勝</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代信子">
+    <rect x="2715.0" y="670" width="92" height="40" rx="4"/>
+    <text x="2761.0" y="694.5" font-size="13" text-anchor="middle">八代信子</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代幹夫">
+    <rect x="2605.0" y="670" width="92" height="40" rx="4"/>
+    <text x="2651.0" y="694.5" font-size="13" text-anchor="middle">八代幹夫</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代洋平">
+    <rect x="2660.0" y="820" width="92" height="40" rx="4"/>
+    <text x="2706.0" y="844.5" font-size="13" text-anchor="middle">八代洋平</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代勝斗">
+    <rect x="2863.5" y="970" width="92" height="40" rx="4"/>
+    <text x="2909.5" y="994.5" font-size="13" text-anchor="middle">八代勝斗</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代魁">
+    <rect x="2808.5" y="1120" width="92" height="40" rx="4"/>
+    <text x="2854.5" y="1144.5" font-size="13" text-anchor="middle">八代魁</text>
+  </g>
+  <g class="nd family-yashiro" data-id="采乃">
+    <rect x="3012.0" y="970" width="92" height="40" rx="4"/>
+    <text x="3058.0" y="994.5" font-size="13" text-anchor="middle">采乃</text>
+  </g>
+  <g class="nd family-yashiro" data-id="おと">
+    <rect x="2308.0" y="970" width="92" height="40" rx="4"/>
+    <text x="2354.0" y="994.5" font-size="13" text-anchor="middle">おと</text>
+  </g>
+  <g class="nd family-yashiro" data-id="こうが">
+    <rect x="2456.5" y="970" width="92" height="40" rx="4"/>
+    <text x="2502.5" y="994.5" font-size="13" text-anchor="middle">こうが</text>
+  </g>
+  <g class="nd family-yashiro" data-id="おうま">
+    <rect x="2605.0" y="970" width="92" height="40" rx="4"/>
+    <text x="2651.0" y="994.5" font-size="13" text-anchor="middle">おうま</text>
+  </g>
+  <g class="nd family-yashiro" data-id="みい">
+    <rect x="2550.0" y="820" width="92" height="40" rx="4"/>
+    <text x="2596.0" y="844.5" font-size="13" text-anchor="middle">みい</text>
+  </g>
+  <g class="nd family-yashiro" data-id="ゆきこ">
+    <rect x="2770.0" y="820" width="92" height="40" rx="4"/>
+    <text x="2816.0" y="844.5" font-size="13" text-anchor="middle">ゆきこ</text>
+  </g>
+  <g class="nd family-yashiro" data-id="八代申也">
+    <rect x="1862.5" y="670" width="92" height="40" rx="4"/>
+    <text x="1908.5" y="694.5" font-size="13" text-anchor="middle">八代申也</text>
+  </g>
+  <g class="nd family-yashiro" data-id="たかし">
+    <rect x="1714.0" y="670" width="92" height="40" rx="4"/>
+    <text x="1760.0" y="694.5" font-size="13" text-anchor="middle">たかし</text>
+  </g>
+  <g class="nd family-yashiro" data-id="ようすけ">
+    <rect x="2011.0" y="670" width="92" height="40" rx="4"/>
+    <text x="2057.0" y="694.5" font-size="13" text-anchor="middle">ようすけ</text>
+  </g>
+  <g class="nd family-yashiro" data-id="あき子">
+    <rect x="2159.5" y="670" width="92" height="40" rx="4"/>
+    <text x="2205.5" y="694.5" font-size="13" text-anchor="middle">あき子</text>
+  </g>
+  <g class="nd family-yashiro" data-id="(福岡)">
+    <rect x="619.5" y="670" width="92" height="40" rx="4"/>
+    <text x="665.5" y="694.5" font-size="13" text-anchor="middle">(福岡)</text>
+  </g>
+  <g class="nd family-yashiro" data-id="(千葉)">
+    <rect x="861.5" y="670" width="92" height="40" rx="4"/>
+    <text x="907.5" y="694.5" font-size="13" text-anchor="middle">(千葉)</text>
+  </g>
+  <g class="nd family-yashiro" data-id="NASA">
+    <rect x="713.0" y="820" width="92" height="40" rx="4"/>
+    <text x="759.0" y="844.5" font-size="13" text-anchor="middle">NASA</text>
+  </g>
+  <g class="nd family-yashiro" data-id="安田のおじ">
+    <rect x="1010.0" y="670" width="92" height="40" rx="4"/>
+    <text x="1056.0" y="694.5" font-size="13" text-anchor="middle">安田のおじ</text>
+  </g>
+  <g class="nd family-yashiro" data-id="くすのおば">
+    <rect x="1362.0" y="670" width="92" height="40" rx="4"/>
+    <text x="1408.0" y="694.5" font-size="13" text-anchor="middle">くすのおば</text>
+  </g>
+  <g class="nd family-yashiro" data-id="sata">
+    <rect x="1752.5" y="220" width="92" height="40" rx="4"/>
+    <text x="1798.5" y="244.5" font-size="13" text-anchor="middle">サタ(黒岩)</text>
+  </g>
+  <g class="nd family-oth" data-id="namie">
+    <rect x="2495.0" y="520" width="92" height="40" rx="4"/>
+    <text x="2541.0" y="544.5" font-size="11.5" text-anchor="middle">ナミエ(石松)</text>
+  </g>
+  <g class="nd family-muchi" data-id="ツネサク">
+    <rect x="4904.0" y="220" width="92" height="40" rx="4"/>
+    <text x="4950.0" y="244.5" font-size="13" text-anchor="middle">ツネサク</text>
+  </g>
+  <g class="nd family-muchi" data-id="ツタエ">
+    <rect x="4794.0" y="220" width="92" height="40" rx="4"/>
+    <text x="4840.0" y="244.5" font-size="13" text-anchor="middle">ツタエ</text>
+  </g>
+  <g class="nd family-muchi" data-id="ブンサク">
+    <rect x="4904.0" y="370" width="92" height="40" rx="4"/>
+    <text x="4950.0" y="394.5" font-size="13" text-anchor="middle">ブンサク</text>
+  </g>
+  <g class="nd family-muchi" data-id="ハツコ">
+    <rect x="4794.0" y="370" width="92" height="40" rx="4"/>
+    <text x="4840.0" y="394.5" font-size="13" text-anchor="middle">ハツコ</text>
+  </g>
+  <g class="nd family-muchi" data-id="やえこ">
+    <rect x="4403.5" y="520" width="92" height="40" rx="4"/>
+    <text x="4449.5" y="544.5" font-size="13" text-anchor="middle">やえこ</text>
+  </g>
+  <g class="nd family-muchi" data-id="きみこ">
+    <rect x="4552.0" y="520" width="92" height="40" rx="4"/>
+    <text x="4598.0" y="544.5" font-size="13" text-anchor="middle">きみこ</text>
+  </g>
+  <g class="nd family-muchi" data-id="とらえ">
+    <rect x="4700.5" y="520" width="92" height="40" rx="4"/>
+    <text x="4746.5" y="544.5" font-size="13" text-anchor="middle">とらえ</text>
+  </g>
+  <g class="nd family-muchi" data-id="みきえ">
+    <rect x="4849.0" y="520" width="92" height="40" rx="4"/>
+    <text x="4895.0" y="544.5" font-size="13" text-anchor="middle">みきえ</text>
+  </g>
+  <g class="nd family-muchi" data-id="ひさえ">
+    <rect x="4997.5" y="520" width="92" height="40" rx="4"/>
+    <text x="5043.5" y="544.5" font-size="13" text-anchor="middle">ひさえ</text>
+  </g>
+  <g class="nd family-muchi" data-id="キデン">
+    <rect x="5146.0" y="520" width="92" height="40" rx="4"/>
+    <text x="5192.0" y="544.5" font-size="13" text-anchor="middle">キデン</text>
+  </g>
+  <g class="nd family-muchi" data-id="大牟田おじ">
+    <rect x="5294.5" y="520" width="92" height="40" rx="4"/>
+    <text x="5340.5" y="544.5" font-size="13" text-anchor="middle">大牟田おじ</text>
+  </g>
+  <g class="nd family-muchi" data-id="shiho">
+    <rect x="2715.0" y="520" width="92" height="40" rx="4"/>
+    <text x="2761.0" y="544.5" font-size="13" text-anchor="middle">八代志保</text>
+  </g>
+  <g class="nd family-iso" data-id="タクマ">
+    <rect x="3958.0" y="370" width="92" height="40" rx="4"/>
+    <text x="4004.0" y="394.5" font-size="13" text-anchor="middle">タクマ</text>
+  </g>
+  <g class="nd family-iso" data-id="モリエ">
+    <rect x="4068.0" y="370" width="92" height="40" rx="4"/>
+    <text x="4114.0" y="394.5" font-size="13" text-anchor="middle">モリエ</text>
+  </g>
+  <g class="nd family-iso" data-id="ナミオ">
+    <rect x="4013.0" y="520" width="92" height="40" rx="4"/>
+    <text x="4059.0" y="544.5" font-size="13" text-anchor="middle">ナミオ</text>
+  </g>
+  <g class="nd family-iso" data-id="キミ">
+    <rect x="4161.5" y="520" width="92" height="40" rx="4"/>
+    <text x="4207.5" y="544.5" font-size="13" text-anchor="middle">キミ</text>
+  </g>
+  <g class="nd family-iso" data-id="横浜おじ">
+    <rect x="3864.5" y="520" width="92" height="40" rx="4"/>
+    <text x="3910.5" y="544.5" font-size="13" text-anchor="middle">横浜おじ</text>
+  </g>
+  <g class="nd family-iso" data-id="磯崎タケオ">
+    <rect x="2825.0" y="520" width="92" height="40" rx="4"/>
+    <text x="2871.0" y="544.5" font-size="13" text-anchor="middle">磯崎タケオ</text>
+  </g>
+  <g class="nd family-iso" data-id="春美">
+    <rect x="3179.8" y="670" width="92" height="40" rx="4"/>
+    <text x="3225.8" y="694.5" font-size="13" text-anchor="middle">春美</text>
+  </g>
+  <g class="nd family-iso" data-id="みつき">
+    <rect x="3457.5" y="670" width="92" height="40" rx="4"/>
+    <text x="3503.5" y="694.5" font-size="13" text-anchor="middle">みつき</text>
+  </g>
+  <g class="nd family-iso" data-id="和ふみ">
+    <rect x="3606.0" y="670" width="92" height="40" rx="4"/>
+    <text x="3652.0" y="694.5" font-size="13" text-anchor="middle">和ふみ</text>
+  </g>
+  <g class="nd family-iso" data-id="たかやす">
+    <rect x="3179.8" y="820" width="92" height="40" rx="4"/>
+    <text x="3225.8" y="844.5" font-size="13" text-anchor="middle">たかやす</text>
+  </g>
+  <g class="nd family-iso" data-id="らら">
+    <rect x="3160.5" y="970" width="92" height="40" rx="4"/>
+    <text x="3206.5" y="994.5" font-size="13" text-anchor="middle">らら</text>
+  </g>
+  <g class="nd family-iso" data-id="せいら">
+    <rect x="3309.0" y="970" width="92" height="40" rx="4"/>
+    <text x="3355.0" y="994.5" font-size="13" text-anchor="middle">せいら</text>
+  </g>
+  <g class="nd family-taki" data-id="麻美">
+    <rect x="6204.8" y="820" width="92" height="40" rx="4"/>
+    <text x="6250.8" y="844" font-size="13" text-anchor="middle">滝川麻美</text>
+  </g>
+  <g class="nd family-taki" data-id="司">
+    <rect x="6314.8" y="820" width="92" height="40" rx="4"/>
+    <text x="6360.8" y="844.5" font-size="13" text-anchor="middle">滝川司</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u1">
+    <rect x="6130.5" y="1120" width="92" height="40" rx="4"/>
+    <text x="6176.5" y="1144.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u2">
+    <rect x="6279.0" y="1120" width="92" height="40" rx="4"/>
+    <text x="6325.0" y="1144.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u3">
+    <rect x="2753.5" y="970" width="92" height="40" rx="4"/>
+    <text x="2799.5" y="994.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u4">
+    <rect x="3289.8" y="820" width="92" height="40" rx="4"/>
+    <text x="3335.8" y="844.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u6">
+    <rect x="3289.8" y="670" width="92" height="40" rx="4"/>
+    <text x="3335.8" y="694.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u7">
+    <rect x="509.5" y="670" width="92" height="40" rx="4"/>
+    <text x="555.5" y="694.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u8">
+    <rect x="693.8" y="520" width="92" height="40" rx="4"/>
+    <text x="739.8" y="544.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u9">
+    <rect x="1139.3" y="520" width="92" height="40" rx="4"/>
+    <text x="1185.3" y="544.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u10">
+    <rect x="1307.0" y="520" width="92" height="40" rx="4"/>
+    <text x="1353.0" y="544.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u11">
+    <rect x="416.0" y="820" width="92" height="40" rx="4"/>
+    <text x="462.0" y="844.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u12">
+    <rect x="564.5" y="820" width="92" height="40" rx="4"/>
+    <text x="610.5" y="844.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u13">
+    <rect x="1158.5" y="670" width="92" height="40" rx="4"/>
+    <text x="1204.5" y="694.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u14">
+    <rect x="9.0" y="370" width="92" height="40" rx="4"/>
+    <text x="55.0" y="394.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u15">
+    <rect x="9.0" y="520" width="92" height="40" rx="4"/>
+    <text x="55.0" y="544.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u16">
+    <rect x="3848.0" y="370" width="92" height="40" rx="4"/>
+    <text x="3894.0" y="394.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+  <g class="nd unk family-oth" data-id="_u17">
+    <rect x="5014.0" y="370" width="92" height="40" rx="4"/>
+    <text x="5060.0" y="394.5" font-size="13" text-anchor="middle">空欄</text>
+  </g>
+</svg>
+</div>
+
+
+<script src="family_tree.js"></script>
+</body>
+</html>
