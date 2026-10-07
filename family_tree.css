@@ -28,10 +28,11 @@ h1{font-family:var(--serif);font-weight:700;font-size:clamp(26px,5vw,38px);margi
 .view{max-width:1500px;margin-inline:auto;overflow:auto;border:1px solid var(--rule);border-radius:8px;background:var(--card);height:min(78vh,760px);cursor:grab}
 .view.drag{cursor:grabbing}
 svg{display:block}
-.ed{fill:none;stroke-width:1.6}
+#tree .nd{transform-box:fill-box;transform-origin:center;transform:scale(.6122449,.5681818)}
+.ed{fill:none;stroke-width:1.2}
 .ed.adopt{stroke-dasharray:6 4}
-.lk{fill:none;stroke:var(--line);stroke-width:1.4}
-.lk.s{stroke-dasharray:none;stroke-width:1.2;opacity:.8}
+.lk{fill:none;stroke:var(--line);stroke-width:1;stroke-linecap:round;transform-box:fill-box;transform-origin:center;transform:scaleX(2.401)}
+.lk.s{stroke-dasharray:none;stroke-width:1;stroke-linecap:round;opacity:.8}
 .nd rect{fill:var(--card);stroke-width:1.6}
 .nd text{fill:var(--fg);font-family:var(--sans);font-weight:500}
 .nd .sub{fill:var(--muted);font-weight:400}
@@ -46,3 +47,6 @@ svg{display:block}
 .ed.family-iso,.nd.family-iso rect{stroke:var(--iso)}
 .ed.family-oth,.nd.family-oth rect{stroke:var(--oth)}
 .sw-taki{border-color:var(--taki)} .sw-yashiro{border-color:var(--yashiro)} .sw-muchi{border-color:var(--muchi)} .sw-iso{border-color:var(--iso)} .sw-oth{border-color:var(--oth)} .sw-unknown{border-style:dashed;border-color:var(--line)}
+
+/* Keep labels upright while the tree and node groups handle layout scaling. */
+#tree .nd text{transform-box:fill-box;transform-origin:center;transform:scale(1.1666667,1.1);writing-mode:vertical-rl;text-orientation:upright;dominant-baseline:central}

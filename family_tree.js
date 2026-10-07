@@ -2,13 +2,13 @@
   const view=document.getElementById('view');
   const svg=document.getElementById('tree');
   const zoomLabel=document.getElementById('zl');
-  const SVG_WIDTH=10198;
-  const SVG_HEIGHT=1230;
-  let zoom=0.7;
+  const SVG_WIDTH=4640.09;
+  const SVG_HEIGHT=2000;
+  let zoom=0.45;
 
   function setZoom(nextZoom,centerX,centerY){
     const previousZoom=zoom;
-    zoom=Math.max(0.15,Math.min(1.6,nextZoom));
+    zoom=Math.max(0.05,Math.min(1.6,nextZoom));
     const pointX=(view.scrollLeft+(centerX==null?view.clientWidth/2:centerX))/previousZoom;
     const pointY=(view.scrollTop+(centerY==null?view.clientHeight/2:centerY))/previousZoom;
     svg.setAttribute('width',SVG_WIDTH*zoom);
@@ -67,7 +67,10 @@
   const jointLabel=svg.querySelector('.joint-label');
   if(jointLabel){
     const bounds=jointLabel.getBBox();
-    view.scrollLeft=Math.max(0,bounds.x*zoom-view.clientWidth/2);
+    view.scrollLeft=Math.max(0,(bounds.x+bounds.width/2)*1.4*zoom-view.clientWidth/2);
+    view.scrollTop=0;
+  }else{
+    view.scrollLeft=Math.max(0,(SVG_WIDTH*zoom-view.clientWidth)/2);
     view.scrollTop=0;
   }
 })();
