@@ -2,11 +2,11 @@
 
 この文書は、縦書き版の家系図に人物・婚姻・親子関係を追加するときの作業手順です。
 この家系図はデータから自動生成されるものではありません。人物枠と関係線を
-[`index_tategaki.html`](./index_tategaki.html) のSVGに手作業で追加します。
+[`index.html`](./index.html) のSVGに手作業で追加します。
 
 ## 編集する場所
 
-`index_tategaki.html` のSVG内に、次の3つの領域があります。
+`index.html` のSVG内に、次の3つの領域があります。
 
 | SVG領域 | 内容 | 追加するもの |
 | --- | --- | --- |
@@ -16,7 +16,6 @@
 
 人物ノードは既存の並び順を保ちながら`people`内に追加します。線は人物より前に
 描画されるよう、それぞれ既存の`relationships`または`marriages`内に追加します。
-同じ家系図の横書き版（`index.html`）ではなく、縦書き版を編集してください。
 
 ## 座標と枠のサイズ
 
@@ -41,8 +40,8 @@ HTMLに書く数値は、SVG内側の元の座標です。SVG全体には
 - 既存の行の目安: `35`, `185`, `335`, `485`, `635`, `785`, `935`, `1085`
 - 横位置`X`は既存ノードや線と重ならない場所に決め、実画面でも確認する
 
-SVGの縮尺を調整するCSSは[`family_tree_tategaki.css`](./family_tree_tategaki.css)、
-表示サイズやズームは[`family_tree_tategaki.js`](./family_tree_tategaki.js)が担当します。
+SVGの縮尺を調整するCSSは[`family_tree.css`](./family_tree.css)、
+表示サイズやズームは[`family_tree.js`](./family_tree.js)が担当します。
 人物追加時には、枠の寸法を変えるためにCSSやズーム設定を変更しないでください。
 
 ## 1. 人物枠を追加する
@@ -50,7 +49,7 @@ SVGの縮尺を調整するCSSは[`family_tree_tategaki.css`](./family_tree_tate
 `people`領域に、次の形で追加します。
 
 ```html
-<g class="nd family-yashiro" data-id="新しい人物">
+<g class="nd family-yatsu" data-id="新しい人物">
   <rect x="X" y="Y" width="28" height="110" rx="4"/>
   <text x="CX" y="CY" font-size="13" text-anchor="middle">新しい人物</text>
 </g>
@@ -59,12 +58,12 @@ SVGの縮尺を調整するCSSは[`family_tree_tategaki.css`](./family_tree_tate
 `CX`は`X + 14`、`CY`は`Y + 55`の数値に置き換えます。枠の大きさを揃えるため、
 `width`、`height`、`rx`は変えません。
 
-`family-yashiro`は所属に合わせて次から選びます。
+`family-yatsu`は所属に合わせて次から選びます。
 
 | class | 色 |
 | --- | --- |
 | `family-taki` | 滝川家 |
-| `family-yashiro` | 八代家 |
+| `family-yatsu` | 八代家 |
 | `family-muchi` | 鞭馬家 |
 | `family-iso` | 磯崎家 |
 | `family-oth` | 配偶者・その他 |
@@ -123,7 +122,7 @@ SVGの縮尺を調整するCSSは[`family_tree_tategaki.css`](./family_tree_tate
 
 ```html
 <!-- 親子・系譜: 八代洋平・ゆきこ → 八代勝斗・采乃 -->
-<path class="ed family-yashiro" d="M897.325,840V880M897.325,880H993.85M945.5875,880V965M993.85,880V965"/>
+<path class="ed family-yatsu" d="M897.325,840V880M897.325,880H993.85M945.5875,880V965M993.85,880V965"/>
 ```
 
 - 親から横枝まで縦線を引き、横枝は一番左の子の中心から一番右の子の中心まで引きます。

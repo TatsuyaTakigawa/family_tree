@@ -2,17 +2,17 @@
 
 :root{
   --bg:#f6f4f0; --card:#fffdf9; --fg:#25262b; --muted:#6d6f78; --line:#8f939c; --rule:#dcd8d0;
-  --taki:#2c6a9c; --yashiro:#2f8052; --muchi:#b3741a; --iso:#7656a6; --oth:#8a9099; --accent:#c4421a;
+  --taki:#2c6a9c; --yatsu:#2f8052; --muchi:#b3741a; --iso:#7656a6; --oth:#8a9099; --accent:#c4421a;
   --panel:#ece9e3;
   --serif:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
   --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#17181c; --card:#212329; --fg:#ebe9e4; --muted:#9a9ca6; --line:#7d818b; --rule:#33353c;
-  --taki:#6fb0e3; --yashiro:#62c28a; --muchi:#e0a24b; --iso:#b496e0; --oth:#8b919c; --accent:#ff8a5c; --panel:#23252b; color-scheme:dark}}
+  --taki:#6fb0e3; --yatsu:#62c28a; --muchi:#e0a24b; --iso:#b496e0; --oth:#8b919c; --accent:#ff8a5c; --panel:#23252b; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#17181c; --card:#212329; --fg:#ebe9e4; --muted:#9a9ca6; --line:#7d818b; --rule:#33353c;
-  --taki:#6fb0e3; --yashiro:#62c28a; --muchi:#e0a24b; --iso:#b496e0; --oth:#8b919c; --accent:#ff8a5c; --panel:#23252b; color-scheme:dark}
+  --taki:#6fb0e3; --yatsu:#62c28a; --muchi:#e0a24b; --iso:#b496e0; --oth:#8b919c; --accent:#ff8a5c; --panel:#23252b; color-scheme:dark}
 body{background:var(--bg);color:var(--fg);font-family:var(--sans);padding-inline:16px;padding-block:20px 40px}
 header{max-width:1100px;margin-inline:auto;display:flex;flex-wrap:wrap;gap:12px 32px;align-items:flex-end;justify-content:space-between}
 h1{font-family:var(--serif);font-weight:700;font-size:clamp(26px,5vw,38px);margin:0;letter-spacing:.04em;text-wrap:balance}
@@ -42,11 +42,11 @@ svg{display:block}
 .joint-label{fill:var(--accent);font-size:12px;font-weight:700;font-family:var(--sans);letter-spacing:.06em}
 
 .ed.family-taki,.nd.family-taki rect{stroke:var(--taki)}
-.ed.family-yashiro,.nd.family-yashiro rect{stroke:var(--yashiro)}
+.ed.family-yatsu,.nd.family-yatsu rect{stroke:var(--yatsu)}
 .ed.family-muchi,.nd.family-muchi rect{stroke:var(--muchi)}
 .ed.family-iso,.nd.family-iso rect{stroke:var(--iso)}
 .ed.family-oth,.nd.family-oth rect{stroke:var(--oth)}
-.sw-taki{border-color:var(--taki)} .sw-yashiro{border-color:var(--yashiro)} .sw-muchi{border-color:var(--muchi)} .sw-iso{border-color:var(--iso)} .sw-oth{border-color:var(--oth)} .sw-unknown{border-style:dashed;border-color:var(--line)}
+.sw-taki{border-color:var(--taki)} .sw-yatsu{border-color:var(--yatsu)} .sw-muchi{border-color:var(--muchi)} .sw-iso{border-color:var(--iso)} .sw-oth{border-color:var(--oth)} .sw-unknown{border-style:dashed;border-color:var(--line)}
 
 /* Keep labels upright while the tree and node groups handle layout scaling. */
 #tree .nd text{transform-box:fill-box;transform-origin:center;transform:scale(1.1666667,1.1);writing-mode:vertical-rl;text-orientation:upright;dominant-baseline:central}
